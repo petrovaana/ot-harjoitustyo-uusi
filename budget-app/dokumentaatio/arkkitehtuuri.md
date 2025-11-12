@@ -2,24 +2,15 @@
 
 ## Structure
 
-The application has 3 main layers. 1st being UI layer. This is what the user sees and where the user can interact. 2nd is the Service layer, which contains the information of what happens when the user interacts with the UI layer. 3rd is the Repository layer. This layer saves information to SQLite.
+The application has 3 main layers. Top layer being UI. This is what the user sees and where the user can interact with the app. 2nd is the Service layer, which contains the information of what happens when the user interacts with the UI layer, for example when user adds a transaction. 3rd is the Repository layer. This layer saves information to SQLite.
 
 
 
 ## Operating system
 
-Application consist out of 4 different views:
+Application consist out of 4 different views: register, login, main view, create a new transaction.
 
-&nbsp;   1. Register
-
-&nbsp;   2. Login
-
-&nbsp;   3. Main view 
-
-&nbsp;   4. Create a new transaction
-
-\#Explaining more later when known how it Works.
-
+\#Explaining more later when known how it Works. 
 
 
 ## Application logic
@@ -30,31 +21,23 @@ The application has classes User and Budget. They describe users and their bugde
 
 ```mermaid
 
-&nbsp;classDiagram
+classDiagram
+    Budget "\*" --> "1" User
+        class User{
+            id
+            username
+            password
+        }
 
-&nbsp;     Budget "\*" --> "1" User
-
-&nbsp;     class User{
-
-&nbsp;         username
-
-&nbsp;         password
-
-&nbsp;     }
-
-&nbsp;     class Budget{
-
-&nbsp;         id
-
-&nbsp;         amount
-
-&nbsp;         content
-
-&nbsp;     }
+        class Budget{
+            id
+            amount
+            content
+        }
 
 ```
 
 
 
-\#Explaining more when done
+\#Explaining more later
 
