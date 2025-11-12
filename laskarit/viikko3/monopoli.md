@@ -32,5 +32,27 @@
         id
         heitaNoppa()
     }
+    Ruutu "1" -- "*" Katu
+    class Katu{
+        pelaaja
+        kadunNimi
+        paljonkoMaksaa
+        onkoOmistettu()
+    }
+    Ruutu "1" -- "*" sattumaJaYhteism
+    class sattumaJaYhteism{
+        pelaaja
+        nostaKortti()
+    }
+    Ruutu "1" -- "1" Vankila
+    class Vankila{
+        sijainti
+        pelaaja
+    }
+    Ruutu "1" -- "1" AloitusRuutu
+    class AloitusRuutu{
+        sijainti
+        pelaaja
+    }
     Pelaaja "2..8" -- "1" Monopolipeli
 ```
