@@ -1,3 +1,4 @@
+#Asked copilot to explain the connection and used the course material for this
 import sqlite3
 from config import DATABASE_FILE_PATH
 
