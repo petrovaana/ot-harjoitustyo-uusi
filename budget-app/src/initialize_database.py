@@ -1,3 +1,4 @@
+#Asked help from copilot to explain the coursematerial on how to connect database so the Database_file and the idea was explained by it, but the code for creating the table was mine
 import sqlite3
 from config import DATABASE_FILE_PATH
 
