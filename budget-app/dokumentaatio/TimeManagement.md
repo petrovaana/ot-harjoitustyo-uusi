@@ -3,12 +3,18 @@
 
 
 Date: 11.11.2025
-
 Time: 3 hours
-
 What was done: Wrote the requirements for the application, and explored tkinder and other related subjects for this application.
 
 
 Date: 12.11.2025
 Time: 3 hours
 What was done: I tried to understand the basics of the app logic and added some temporary changes to my own files. Tried adding a database and understand in general how to connect the database to my own project. Generally getting an understanding of what is asked to be done and experimenting to learn.
+
+Date: 14.11.2025
+Time: 1,5 hours
+What was done: I studied the course material about TkInter, and experimented with different buttons etc. and in general how it works and what can be done.
+
+Date: 15.11.2025
+Time: 6 hours
+What was done: I created the UI views for login and register. Also made sure you can smoothly go from login page to create an account and edited the ui.py file. Also studied the TkInter instructions till the end, since this is new to me. Tried creating database, but failed a few times. Still have a few more things to add to UI views (like error messages), but for now I think they were good. Did some planning in what the main page will have (ideally), and also did a mockup for it. Studied the backend too, like how does the repository side works and how should my app function in general. 
