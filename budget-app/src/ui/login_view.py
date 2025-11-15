@@ -1,10 +1,10 @@
+#Used course material (TkInter guide)
 from tkinter import ttk, constants
-from create_user_view import CreateUserView
 
 class LoginView:
     def __init__(self, root, handle_login, handle_show_create_user_view):
         self._root = root
-        self._frame = None
+        self._frame = ttk.Frame(master=self._root)
         self._handle_login = handle_login
         self._handle_show_create_user_view = handle_show_create_user_view
         self._entry_password = None
@@ -20,8 +20,8 @@ class LoginView:
     
     def _initialize(self):
     #Jsst a heading for the registration
-        label = ttk.Label(master=self._frame, text="Login with an existing username:", anchor="center")
-        label.grid(row=0, column=0, columnspan=2, sticky=(constants.W + constants.E), padx=5, pady=5)
+        label = ttk.Label(master=self._frame, text="Login with an existing username:", anchor="center")#Asked AI for how to make the text in the middle
+        label.grid(row=0, column=0, columnspan=2, sticky=(constants.W + constants.E), padx=5, pady=5) 
 
         #Login tietoje kirjaaminen:
         label_username = ttk.Label(master=self._frame, text="Username:")

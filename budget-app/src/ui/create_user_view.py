@@ -1,16 +1,16 @@
 from tkinter import ttk, constants, StringVar#, Tk #, Tk jos kokeilen toimintaa viel
 
-#Vaiha myöhemmin yoi handle_create_user niin et toimii oikein
+#Vaiha myöhemmin yoi handle_create_user niin et toimii oikein: lisää jos tarve handle_show_login_view
 class CreateUserView:
     def __init__(self, root, handle_create_user, handle_show_login_view):
         self._root = root
-        self._frame = None
+        self._frame = ttk.Frame(master=self._root)
         self._handle_create_user = handle_create_user
         self._handle_show_login_view = handle_show_login_view
+
         self._username_entry = None
         self._password1_entry = None
         self._password2_entry = None
-
 
         self._initialize()
 
@@ -45,7 +45,11 @@ class CreateUserView:
 
     #A button for creating an account (not working yet)
         create_user_button = ttk.Button(master=self._frame, text="Create an Account", command=self._create_user_handler)
-        create_user_button.grid(row=4, column=0, columnspan=2, sticky=(constants.E, constants.W), padx=5, pady=5)
+        create_user_button.grid(row=4, column=1, columnspan=1, sticky=(constants.E, constants.W), padx=5, pady=5)
+    
+    #Buttoni for back login
+        back_to_login_button = ttk.Button(master=self._frame, text="Back To Login", command=self._handle_show_login_view)
+        back_to_login_button.grid(row=4, column=0, columnspan=1, sticky=(constants.E, constants.W), padx=5, pady=5)
 
     
     #Vielä virheellinen ei toimi niiku pitää
@@ -56,8 +60,9 @@ class CreateUserView:
 
 #Nää on myöhemmälle jos ei oo oikeet tiedote syötetty virheilmot
         if len(username) < 3 or (len(password) < 3 and password != password2):
-            print("Unable")
+            print("Invalid")
             return
+        self._handle_create_user(username, password)
 
 #Pitää lisätä virheilmot?
 
