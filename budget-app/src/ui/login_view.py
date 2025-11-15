@@ -12,20 +12,21 @@ class LoginView:
         self._frame.destroy()
     
     def _initialize(self):
+    #Jsst a heading for the registration
         self._frame = ttk.Frame(master=self._root)
-        label = ttk.Label(master=self._root, text="Login with an existing username:")
-        label.grid(row=0, column=0, columnspan=2)
+        label = ttk.Label(master=self._root, text="Login with an existing username:", anchor="center")
+        label.grid(row=0, column=0, columnspan=2, sticky=(constants.W + constants.E), padx=5, pady=5)
 
         #Login tietoje kirjaaminen:
         label_username = ttk.Label(master=self._root, text="Username:")
         entry_username = ttk.Entry(master=self._root)
-        label_username.grid(row=1, column=0)
-        entry_username.grid(row=1, column=1)
+        label_username.grid(row=1, column=0, padx=5, pady=5)
+        entry_username.grid(row=1, column=1, padx=5, pady=5)
 
         label_password = ttk.Label(master=self._root, text="Password:")
-        entry_password = ttk.Entry(master=self._root)
-        label_password.grid(row=2, column=0)
-        entry_password.grid(row=2, column=1)
+        entry_password = ttk.Entry(master=self._root, show='*')
+        label_password.grid(row=2, column=0, padx=5, pady=5)
+        entry_password.grid(row=2, column=1, padx=5, pady=5)
 
 
 #Lisäö napeille commandid et mitä tapahtuu
@@ -33,16 +34,16 @@ class LoginView:
             master=self._root,
             text="Login"
         )
-        button_login.grid(row=3, column=1)
+        button_login.grid(row=3, column=0, columnspan=2, sticky=(constants.E, constants.W), padx=5, pady=5)
 
-        label_registration = ttk.Label(master=self._root, text="Or register: ")
-        label_registration.grid(row=4, column=0)
+        label_registration = ttk.Label(master=self._root, text="No account? Please register: ", anchor="center")
+        label_registration.grid(row=5, column=0, columnspan=2, sticky=(constants.W + constants.E), padx=5, pady=5)
 
         button_register = ttk.Button(
             master=self._root,
-            text="Register"
+            text="Create an account"
         )
-        button_register.grid(row=4, column=1)
+        button_register.grid(row=6, column=0, columnspan=2, sticky=(constants.E, constants.W), padx=5, pady=5)
     
 
 window = Tk()
