@@ -1,12 +1,17 @@
-from tkinter import ttk, constants, StringVar, Tk #, Tk jos kokeilen toimintaa viel
+from tkinter import ttk, constants, StringVar#, Tk #, Tk jos kokeilen toimintaa viel
 
 #Vaiha myöhemmin yoi handle_create_user niin et toimii oikein
 class CreateUserView:
-    def __init__(self, root, handle_create_user=None):
+    def __init__(self, root, handle_create_user, handle_show_login_view):
         self._root = root
-        self._frame = ttk.Frame(master=self._root)
+        self._frame = None
         self._handle_create_user = handle_create_user
-        self._error_var = StringVar()
+        self._handle_show_login_view = handle_show_login_view
+        self._username_entry = None
+        self._password1_entry = None
+        self._password2_entry = None
+
+
         self._initialize()
 
     def pack(self):
@@ -39,32 +44,27 @@ class CreateUserView:
         self._password2_entry.grid(row=3, column=1, sticky=(constants.E, constants.W), padx=5, pady=5)
 
     #A button for creating an account (not working yet)
-        create_user_button = ttk.Button(master=self._frame, text="Create an Account", command=self._create_user)
+        create_user_button = ttk.Button(master=self._frame, text="Create an Account", command=self._create_user_handler)
         create_user_button.grid(row=4, column=0, columnspan=2, sticky=(constants.E, constants.W), padx=5, pady=5)
 
     
     #Vielä virheellinen ei toimi niiku pitää
-    def _create_user(self):
+    def _create_user_handler(self):
         username = self._username_entry.get()
         password = self._password1_entry.get()
         password2 = self._password2_entry.get()
 
-        if len(username) < 3 or len(password) < 3:
-            self._error_var.set("Username and password must be at least 3 characters")
-            return
-        elif password != password2:
-            self._error_var.set("Username and password must be at least 3 characters")
+#Nää on myöhemmälle jos ei oo oikeet tiedote syötetty virheilmot
+        if len(username) < 3 or (len(password) < 3 and password != password2):
+            print("Unable")
             return
 
-#Tää osa pitää muokkaa ja korjaa ongelma..
-        self._error_var.set("")
-        if self._handle_create_user:
-            self._handle_create_user(username, password)
+#Pitää lisätä virheilmot?
 
 
 #Iha vaa testaamista varten luotu for now:)
-window = Tk()
-window.title("Register")
-view = CreateUserView(window)
-view.pack()
-window.mainloop()
+#window = Tk()
+#window.title("Register")
+#iew = CreateUserView(window)
+#view.pack()
+#window.mainloop()

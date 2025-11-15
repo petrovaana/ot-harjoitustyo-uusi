@@ -1,5 +1,6 @@
 #täs määritellään et millon mikäki view näkyy
 from tkinter import Tk
+from login_view import LoginView
 from create_user_view import CreateUserView
 
 class UI:
@@ -9,18 +10,27 @@ class UI:
     
     def start(self):
         self._show_login_view()
-    
-    def create_user_view(self):
-        self._current_view = CreateUserView(
-            self._root,
-            #self.handle_create_user #en oo varma viel miten siis yhistää
-        )
 
     def _show_login_view(self):
-        pass
+        if self._current_view:
+            self._current_view.destroy()
+        
+        self._current_view = LoginView(
+            self._root,
+            self._show_login_view,
+            self._show_create_user_view
+        )
+        self._current_view.pack()
 
-    def budget_view(self):
-        pass
+    def _show_create_user_view(self):
+        if self._current_view:
+            self._current_view.destroy()
+        
+        self._current_view = CreateUserView(
+            self._root,
+            self._show_create_user_view
+        )
+        self._current_view.pack()
 
 
 window = Tk()
