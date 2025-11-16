@@ -1,4 +1,3 @@
-#Asked copilot to explain the connection and used the course material for this
 import os
 import sqlite3
 
