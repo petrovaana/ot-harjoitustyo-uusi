@@ -1,7 +1,12 @@
 from database_connection import get_database_connection
 import os
 
+#Asked AI to edit this file so that my database would finally work
+#AI Generated code begins
 def initialize_database():
+    data_dir = os.path.join(os.path.dirname(__file__), "..", "data")
+    os.makedirs(data_dir, exist_ok=True)
+
     connection = get_database_connection()
     cursor = connection.cursor()
 
@@ -19,3 +24,5 @@ def initialize_database():
 
 if __name__ == "__main__":
     initialize_database()
+
+#AI Generated code ends. 

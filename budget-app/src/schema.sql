@@ -8,7 +8,7 @@ CREATE TABLE users (
     password TEXT NOT NULL
 );
 
-CREATE TABLE logged_spengings (
+CREATE TABLE logged_spendings (
     id INTEGER PRIMARY KEY,
     username TEXT NOT NULL,
     amount INTEGER NOT NULL,
