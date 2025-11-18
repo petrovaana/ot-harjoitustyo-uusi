@@ -1,12 +1,15 @@
-import os
-from dotenv import load_dotenv
+from tkinter import Tk
+from ui.ui import UI
 
-dirname = os.path.dirname(__file__)
+def main():
+    window = Tk()
+    window.title("Budget-App!")
 
-try:
-    load_dotenv(dotenv_path=os.path.join(dirname, "..", ".env"))
-except FileNotFoundError:
-    pass
+    ui_view = UI(window)
+    ui_view.start()
 
-print(os.getenv("FOO"))
-print(os.getenv("LOREM"))
+    window.mainloop()
+
+
+if __name__ == "__main__":
+    main()
