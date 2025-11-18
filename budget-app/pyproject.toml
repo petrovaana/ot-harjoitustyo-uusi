@@ -19,5 +19,8 @@ build-backend = "poetry.core.masonry.api"
 
 [dependency-groups]
 dev = [
-    "pytest-dotenv (>=0.5.2,<0.6.0)"
+    "pytest-dotenv (>=0.5.2,<0.6.0)",
+    "coverage (>=7.11.3,<8.0.0)",
+    "pytest (>=9.0.1,<10.0.0)",
+    "pytest-cov (>=7.0.0,<8.0.0)"
 ]
