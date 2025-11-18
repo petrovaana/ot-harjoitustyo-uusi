@@ -1,7 +1,7 @@
-#täs määritellään et millon mikäki view näkyy
-from tkinter import Tk
-from login_view import LoginView
-from create_user_view import CreateUserView
+#Coursematerial, geeksforgeeks for tkinter
+from ui.login_view import LoginView
+from ui.create_user_view import CreateUserView
+from ui.logged_in_budget_view import LoggedInView
 
 class UI:
     def __init__(self, root):
@@ -33,15 +33,27 @@ class UI:
         )
         self._current_view.pack()
 
+    def _show_logged_in_view(self):
+        if self._current_view:
+            self._current_view.destroy()
+        
+        self._current_view = LoggedInView(
+            self._root#Tähä vois lisätä myöhemmin ._handle_create_transaction mikä lois uuden kirjauksen budjettiin? Mut for now kunha vaa avais sen 
+        )
+        self._current_view.pack() 
+
 #Muokattava vielä
-    def _handle_login(self, username, password):
-        print("Login", username, password)
+    def _handle_login(self, username):
+        print(f"Welcome! {username}") #Boxi ei näytä hyvält joku muu? Esim vaa ku on kirjautunu nii siel sivul suoraa
+        self._show_logged_in_view()
     
     def _handle_create_user(self, username, password):
-        print(f"User created {username}", password)
+        print(f"User created {username}", password) #Joku mikä näyttäis kans boxi kans aika kauhee..
+        self._show_login_view() #Vaihtaa näkymää sit itestää 
 
-window = Tk()
-ui = UI(window)
-ui.start()
 
-window.mainloop()
+#Myöhemmin nää index.pyssa nii pyörii ku laittaa taskeihin et pyörittää sitä
+#window = Tk()
+#ui = UI(window)
+#ui.start()
+#window.mainloop()

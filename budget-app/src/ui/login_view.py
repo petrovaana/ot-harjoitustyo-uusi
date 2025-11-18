@@ -1,6 +1,8 @@
-#Used course material (TkInter guide)
-from tkinter import ttk, constants
+#Used course material (TkInter guide) and Geeks for geeks
+from tkinter import ttk, constants, messagebox
+from services.user_service import UserService
 
+#muuta framen alustus vasti initializes?
 class LoginView:
     def __init__(self, root, handle_login, handle_show_create_user_view):
         self._root = root
@@ -18,12 +20,11 @@ class LoginView:
     def destroy(self):
         self._frame.destroy()
     
+#Jakaa myös fiksummin --> luettavampaa koodia +frame täs
     def _initialize(self):
-    #Jsst a heading for the registration
         label = ttk.Label(master=self._frame, text="Login with an existing username:", anchor="center")#Asked AI for how to make the text in the middle
         label.grid(row=0, column=0, columnspan=2, sticky=(constants.W + constants.E), padx=5, pady=5) 
 
-        #Login tietoje kirjaaminen:
         label_username = ttk.Label(master=self._frame, text="Username:")
         self._entry_username = ttk.Entry(master=self._frame)
         label_username.grid(row=1, column=0, padx=5, pady=5)
@@ -34,8 +35,6 @@ class LoginView:
         label_password.grid(row=2, column=0, padx=5, pady=5)
         self._entry_password.grid(row=2, column=1, padx=5, pady=5)
 
-
-#Lisäö napeille commandid et mitä tapahtuu
         button_login = ttk.Button(
             master=self._frame,
             text="Login",
@@ -53,7 +52,13 @@ class LoginView:
         )
         button_register.grid(row=6, column=0, columnspan=2, sticky=(constants.E, constants.W), padx=5, pady=5)
 
+
     def _login_handler(self):
         username = self._entry_username.get()
         password = self._entry_password.get()
-        self._handle_login(username, password)
+        
+        us = UserService()
+        if us.login(username, password):
+            self._handle_login(username)
+        
+        messagebox.showerror("Showerror", "The username or the password was incorrect") #Geeksforgeeks

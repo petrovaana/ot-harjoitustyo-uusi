@@ -1,10 +1,15 @@
+#Coursematerial, geeksforgeeks for tkinter
 import tkinter as tk
-from tkinter import Tk, constants, ttk
+from tkinter import constants, ttk
+
+#HYVIN BUGINEN JA EPÄVALMIS VIELÄ vasta alkuvaihees
+#Yritän miettii mikä ois fiksuin tapa järjestää asiat ja testailen
+#Erilaisii miten saa näkyviin
 
 class LoggedInView:
     def __init__(self, root):
         self._root = root
-        self._frame = None
+        self._frame = ttk.Frame(master=self._root)
 
         self._initialize()
 
@@ -13,14 +18,15 @@ class LoggedInView:
     
     def destroy(self):
         self._frame.destroy()
-    
+
+#sama homma jakaa eri funktioihin ja initializes vast määritellä frame?
     def _initialize(self):
         self._frame = ttk.Frame(master=self._root)
         label = tk.Label(master=self._frame, text="Welcome to Budget-App!", font=("Segoe UI", 16, "bold"))
         label.grid(row=0, column=0, columnspan=2, sticky=constants.W, padx=5, pady=5)
 
 #Menojen laatikko
-        box_spendings = tk.Frame(self._frame, bg="white", bd=2, relief="solid", width=100, height=70)
+        box_spendings = tk.Frame(self._frame, bg="white", bd=2, relief="solid", width=100, height=70)#muokkaa koot koska en tiiä minkä kokosii ois hyvät
         box_spendings.grid(row=1, column=0, padx=10, pady=10)
 
         box_spendings_text = tk.Label(box_spendings, text="The box where all the users spendings will be", bg="white")
@@ -41,12 +47,12 @@ class LoggedInView:
         box_monthly_spendings_text.pack(padx=10, pady=10)
 
     
-window = tk.Tk()
-window.title("Logged in Tests")
-view = LoggedInView(window)
-view.pack()
-window.mainloop()
-    
+#window = tk.Tk()
+#window.title("Logged in Tests")
+#view = LoggedInView(window)
+#view.pack()
+#window.mainloop()
+   
     #nappi mis voi lisätä menoja
     #yleisesti määrittäminen esim näytön koko
     #Miten kaikki näkyy siinä? (menojen määrä täs kuussa, 
