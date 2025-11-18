@@ -50,10 +50,3 @@ class UI:
     def _handle_create_user(self, username, password):
         print(f"User created {username}", password) #Joku mikä näyttäis kans boxi kans aika kauhee..
         self._show_login_view() #Vaihtaa näkymää sit itestää 
-
-
-#Myöhemmin nää index.pyssa nii pyörii ku laittaa taskeihin et pyörittää sitä
-#window = Tk()
-#ui = UI(window)
-#ui.start()
-#window.mainloop()

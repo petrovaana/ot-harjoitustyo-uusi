@@ -67,8 +67,7 @@ class CreateUserView:
             return 
 
         us = UserService()
-        if us.create_user(username, password):
-            print("User created!") #Joku tapa infobox vähä jäykkä tähä
-            self._handle_create_user(username, password)
-        else:
+        if not us.create_user(username, password):
             messagebox.showerror("showerror","Username already exists")
+        else:
+            self._handle_create_user(username, password)

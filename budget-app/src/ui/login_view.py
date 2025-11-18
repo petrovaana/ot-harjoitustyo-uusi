@@ -61,4 +61,5 @@ class LoginView:
         if us.login(username, password):
             self._handle_login(username)
         
-        messagebox.showerror("Showerror", "The username or the password was incorrect") #Geeksforgeeks
+        else:
+            messagebox.showerror("Showerror", "The username or the password was incorrect") #Geeksforgeeks

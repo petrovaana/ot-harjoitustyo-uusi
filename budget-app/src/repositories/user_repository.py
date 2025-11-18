@@ -21,7 +21,7 @@ class UserRepository:
     #Käytetään login tarkistukses
     def find_account(self, username, password):
         cursor = self._connection.cursor()
-        cursor.execute("select 1 from users WHERE username = ? and password = ?", (username, password))
+        cursor.execute("select username, password from users WHERE username = ? and password = ?", (username, password))
         row = cursor.fetchone()
         if row:
             return User(row["username"], row["password"])
