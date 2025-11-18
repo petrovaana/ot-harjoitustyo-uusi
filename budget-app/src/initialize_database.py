@@ -3,6 +3,7 @@ import os
 
 #Asked AI to edit this file so that my database would finally work
 #AI Generated code begins
+
 def initialize_database():
     data_dir = os.path.join(os.path.dirname(__file__), "..", "data")
     os.makedirs(data_dir, exist_ok=True)

@@ -1,5 +1,7 @@
 import os
 import sqlite3
+#Have asked AI for help to figure out the database setup so might have done little 
+#changes to the file with it, but mostly used to understand whats going on
 
 dirname = os.path.dirname(__file__)
 
