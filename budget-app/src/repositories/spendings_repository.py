@@ -2,27 +2,25 @@ from entities.user import User
 from entities.spendings import Spendings
 from database_connection import get_database_connection
 
-#Tää on non-sense tällä hetkellä koitin vaan ymmärtää logiikkaa
-#ja toiminnallisuutta, eli ei mitään virallista tai ees mun koodia
-#Vertailin et mitä repossa ees tapahtuu!
 class SpendingsRepository:
-    def __init__(self, file_path):
-        self._file_path = file_path
+    def __init__(self, connection):
+        self._connection = connection
+
+    def find_all_spendigs_by_username(self, username):
+        cursor = self._connection.cursor()
+        cursor.execute("select amount, content from logged_spendings WHERE username = ?", (username,))
+        rows = cursor.fetchall()
+
+        return list(Spendings(row["amount"], row["content"]) for row in rows)
     
-    def find_all(self):
-        return self._read()
-
-    def find_by_username(self, username):
-        spendings = self.find_all()
-
-        user_spendings = filter(lambda spending: spending.user and spending.user.username == username, spendings)
-
-        return list(user_spendings)
+    def add_spending(self, username, amount, content):
+        cursor = self._connection.cursor()
+        cursor.execute("INSERT into logged_spengings (username, amount, content) values (?, ?, ?)", (username, amount, content))
+        self._connection.commit()
     
-    def get_all(self):
-        pass
-    
-    def create(self, spending):
-        spendings = self.find_all()
+    def delete_all(self):
+        cursor = self._connection.cursor()
+        cursor.execute("DELETE from logged_spendings")
+        self._connection.commit()
 
-        spendings.append(spending)
+spendings_repository = SpendingsRepository(get_database_connection())

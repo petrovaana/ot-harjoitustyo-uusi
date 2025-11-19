@@ -9,7 +9,7 @@ class UserRepository:
         cursor = self._connection.cursor()
         cursor.execute("select * from users")
         rows = cursor.fetchall()
-        return [User(row["username"], row["password"]) for row in rows]
+        return list(User(row["username"], row["password"]) for row in rows)
 
     #Tätä käytetään user_services ku tarkistetaan onko käyttäjä olemassa jo
     def find_username(self, username):
@@ -21,7 +21,7 @@ class UserRepository:
     #Käytetään login tarkistukses
     def find_account(self, username, password):
         cursor = self._connection.cursor()
-        cursor.execute("select username, password from users WHERE username = ? and password = ?", (username, password))
+        cursor.execute("select * from users WHERE username = ? and password = ?", (username, password))
         row = cursor.fetchone()
         if row:
             return User(row["username"], row["password"])
