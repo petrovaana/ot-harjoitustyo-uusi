@@ -2,6 +2,8 @@
 from ui.login_view import LoginView
 from ui.create_user_view import CreateUserView
 from ui.logged_in_budget_view import LoggedInView
+from ui.create_new_spending_view import CreateSpendingView
+from ui.create_new_income_view import CreateIncomeView
 
 class UI:
     def __init__(self, root):
@@ -33,20 +35,54 @@ class UI:
         )
         self._current_view.pack()
 
-    def _show_logged_in_view(self):
+    def _show_logged_in_view(self, username):
         if self._current_view:
             self._current_view.destroy()
         
         self._current_view = LoggedInView(
-            self._root#Tähä vois lisätä myöhemmin ._handle_create_transaction mikä lois uuden kirjauksen budjettiin? Mut for now kunha vaa avais sen 
+            self._root,
+            self._show_create_spenging_view,
+            self._show_create_income_view,
+            username
+            )
+        self._current_view.pack()
+    
+    def _show_create_spenging_view(self, username):
+        if self._current_view:
+            self._current_view.destroy()
+        
+        self._current_view = CreateSpendingView(
+            self._root,
+            self._handle_log_spending,
+            username
         )
-        self._current_view.pack() 
+        self._current_view.pack()
+
+    def _show_create_income_view(self):
+        if self._current_view:
+            self._current_view.destroy()
+        
+        self._current_view = CreateIncomeView(
+            self._root
+        )
+        self._current_view.pack()
 
 #Muokattava vielä
     def _handle_login(self, username):
         print(f"Welcome! {username}") #Boxi ei näytä hyvält joku muu? Esim vaa ku on kirjautunu nii siel sivul suoraa
-        self._show_logged_in_view()
+        self._show_logged_in_view(username)
     
     def _handle_create_user(self, username, password):
         print(f"User created {username}", password) #Joku mikä näyttäis kans boxi kans aika kauhee..
         self._show_login_view() #Vaihtaa näkymää sit itestää 
+    
+    def _handle_show_new_spending_view(self):
+        print("lol pitäs avaa uus sivu")
+        self._show_create_spenging_view(username)
+    
+    def _handle_show_new_income_view(self):
+        print("lol pitäs avaa uus sivu")
+        self._show_create_income_view()
+    
+    def _handle_log_spending(self, username, amount, content):
+        pass

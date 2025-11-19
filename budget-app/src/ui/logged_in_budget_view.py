@@ -2,14 +2,13 @@
 import tkinter as tk
 from tkinter import constants, ttk
 
-#HYVIN BUGINEN JA EPÄVALMIS VIELÄ vasta alkuvaihees
-#Yritän miettii mikä ois fiksuin tapa järjestää asiat ja testailen
-#Erilaisii miten saa näkyviin
-
 class LoggedInView:
-    def __init__(self, root):
+    def __init__(self, root, handle_show_new_spending_view, handle_show_new_income_view, username):
         self._root = root
+        self._handle_show_new_spending_view = handle_show_new_spending_view
+        self._handle_show_new_income_view = handle_show_new_income_view
         self._frame = ttk.Frame(master=self._root)
+        self._username = username
 
         self._initialize()
 
@@ -21,7 +20,6 @@ class LoggedInView:
 
 #sama homma jakaa eri funktioihin ja initializes vast määritellä frame?
     def _initialize(self):
-        self._frame = ttk.Frame(master=self._root)
         label = tk.Label(master=self._frame, text="Welcome to Budget-App!", font=("Segoe UI", 16, "bold"))
         label.grid(row=0, column=0, columnspan=2, sticky=constants.W, padx=5, pady=5)
 
@@ -39,21 +37,10 @@ class LoggedInView:
         box_incomes_text = tk.Label(box_incomes, text="The box where all the users incomes will be", bg="white")
         box_incomes_text.pack(padx=10, pady=10)
 
-#Kuukausittaisten menojen laatikko:
-        box_monthly_spendings = tk.Frame(self._frame, bg="white", bd=2, relief="solid", width=100, height=70)
-        box_monthly_spendings.grid(row=2, column=0, padx=10, pady=10)
+#Nappi millä luoda uus transaction
+        new_spending_button = ttk.Button(master=self._frame, text="Log in new spending", command=self._handle_show_new_spending_view)
+        new_spending_button.grid(row=4, column=0, columnspan=2,  padx=5, pady=5)
 
-        box_monthly_spendings_text = tk.Label(box_monthly_spendings, text="The box where all the users monthly spendings will be", bg="white")
-        box_monthly_spendings_text.pack(padx=10, pady=10)
-
-    
-#window = tk.Tk()
-#window.title("Logged in Tests")
-#view = LoggedInView(window)
-#view.pack()
-#window.mainloop()
-   
-    #nappi mis voi lisätä menoja
-    #yleisesti määrittäminen esim näytön koko
-    #Miten kaikki näkyy siinä? (menojen määrä täs kuussa, 
-    #tulojen määrä täs kuus, en tiiä jotai kategorioit? esim pakolliset?)
+#Lisätty näkyviin, mutta toiminta ei viel oo kunnossa (seuraavaan sprinttiin vast)
+        new_income_button = ttk.Button(master=self._frame, text="Log in new income", command=self._handle_show_new_income_view)
+        new_income_button.grid(row=4, column=3, columnspan=2,  padx=5, pady=5)
