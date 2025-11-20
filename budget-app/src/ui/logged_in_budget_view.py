@@ -3,7 +3,6 @@ from tkinter import constants, ttk
 from services.spendings_service import SpendingsService
 from services.user_service import UserService
 
-
 class SpendingsListView:
     def __init__(self, root, spendings, user):
         self._root = root
@@ -29,22 +28,11 @@ class SpendingsListView:
         item_frame.grid_columnconfigure(0, weight=1)
         item_frame.pack(fill=constants.X)
 
-    def _initialize_all_spending(self):
-        item_frame = ttk.Frame(master=self._frame)
-        label = ttk.Label(master=item_frame, text=f"{self._spendings}€")
-
-        label.grid(row=0, column=0, padx=5, pady=5, sticky=constants.W)
-
-        item_frame.grid_columnconfigure(0, weight=1)
-        item_frame.pack(fill=constants.X)
-
     def _initialize(self):
         self._frame = ttk.Frame(master=self._root)
 
         for spending in self._spendings:
             self._initialize_spending_item(spending)
-
-        self._initialize_all_spending()
 
 
 class LoggedInView:
@@ -69,7 +57,7 @@ class LoggedInView:
     def destroy(self):
         self._frame.destroy()
 
-    def _logout_handler(self):
+    def logout_handler(self):
         self.destroy()
         self.us.logout()
         self._show_login_view()
@@ -88,7 +76,7 @@ class LoggedInView:
         logout_button = ttk.Button(
             master=header_frame,
             text="Logout",
-            command=self._logout_handler
+            command=self.logout_handler
         )
         logout_button.grid(
             row=0,
@@ -114,6 +102,19 @@ class LoggedInView:
         )
 
         self._spending_list_view.pack()
+
+    def _initialize_spendings_all(self):
+        spendings = self.ss.sum_numbers(self._user)
+        total_frame = ttk.Frame(master=self._frame)
+        total_frame.pack(
+            fill=constants.BOTH, expand=True, pady=10)
+        spendings_label = ttk.Label(
+            master=total_frame,
+            text=f"Total spendings: {spendings}€"
+        )
+
+        spendings_label.grid(column=0, sticky=constants.W, padx=5, pady=5)
+        total_frame.pack(fill=constants.X)
 
     def _initialize_buttons(self):
         buttons_frame = ttk.Frame(master=self._frame)
@@ -150,4 +151,5 @@ class LoggedInView:
 
         self._initialize_header()
         self._initialize_spending_list()
+        self._initialize_spendings_all()
         self._initialize_buttons()

@@ -1,7 +1,6 @@
 from tkinter import ttk, constants, messagebox
 from services.user_service import UserService
 
-
 class LoginView:
     def __init__(self, root, show_create_user_view, show_logged_in_view):
         self._root = root
@@ -19,7 +18,7 @@ class LoginView:
     def destroy(self):
         self._frame.destroy()
 
-    def _login_handler(self):
+    def login_handler(self):
         username = self._entry_username.get()
         password = self._entry_password.get()
 
@@ -57,7 +56,7 @@ class LoginView:
         button_login = ttk.Button(
             master=self._frame,
             text="Login",
-            command=self._login_handler
+            command=self.login_handler
         )
 
         button_login.grid(

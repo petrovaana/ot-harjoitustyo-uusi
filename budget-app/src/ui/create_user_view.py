@@ -20,7 +20,7 @@ class CreateUserView:
     def destroy(self):
         self._frame.destroy()
 
-    def _create_user_handler(self):
+    def create_user_handler(self):
         username = self._username_entry.get()
         password = self._password1_entry.get()
         password2 = self._password2_entry.get()
@@ -88,7 +88,7 @@ class CreateUserView:
         create_user_button = ttk.Button(
             master=self._frame,
             text="Create",
-            command=self._create_user_handler
+            command=self.create_user_handler
         )
 
         create_user_button.grid(

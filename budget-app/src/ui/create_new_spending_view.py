@@ -23,15 +23,17 @@ class CreateSpendingView:
     def destroy(self):
         self._frame.destroy()
 
-    def _submit_spending(self):
+    def submit_spending(self):
         amount = self._entry_amount.get()
         content = self._entry_content.get()
 
         if float(amount) <= 0:
             messagebox.showerror("showerror", "Amount added wrong")
+            return
 
         if len(content) <= 0:
             messagebox.showerror("showerror", "Need to add content")
+            return
 
         else:
             self.ss.add_spending(self._user, amount, content)
@@ -63,7 +65,7 @@ class CreateSpendingView:
         submit_button = ttk.Button(
             master=self._frame,
             text="Submit",
-            command=self._submit_spending
+            command=self.submit_spending
         )
 
         submit_button.grid(
