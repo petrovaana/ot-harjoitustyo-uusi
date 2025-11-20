@@ -5,7 +5,9 @@
 Date: 11.11.2025
 
 
+
 Time: 3 hours
+
 
 
 What was done: Wrote the requirements for the application, and explored tkinder and other related subjects for this application.
@@ -15,7 +17,9 @@ What was done: Wrote the requirements for the application, and explored tkinder 
 Date: 12.11.2025
 
 
+
 Time: 3 hours
+
 
 
 What was done: I tried to understand the basics of the app logic and added some temporary changes to my own files. Tried adding a database and understand in general how to connect the database to my own project. Generally getting an understanding of what is asked to be done and experimenting to learn.
@@ -25,7 +29,9 @@ What was done: I tried to understand the basics of the app logic and added some 
 Date: 14.11.2025
 
 
+
 Time: 1,5 hours
+
 
 
 What was done: I studied the course material about TkInter, and experimented with different buttons etc. and in general how it works and what can be done.
@@ -35,7 +41,9 @@ What was done: I studied the course material about TkInter, and experimented wit
 Date: 15.11.2025
 
 
+
 Time: 6 hours
+
 
 
 What was done: I created the UI views for login and register. Also made sure you can smoothly go from login page to create an account and edited the ui.py file. Also studied the TkInter instructions till the end, since this is new to me. Tried creating database, but failed a few times. Still have a few more things to add to UI views (like error messages), but for now I think they were good. Did some planning in what the main page will have (ideally), and also did a mockup for it. Studied the backend too, like how does the repository side works and how should my app function in general.
@@ -62,9 +70,9 @@ Time: 6 hours
 
 
 
-What was done: 
+What was done:
 
-* Connected the UI and the backend to work together and fixed some major bugs. 
+* Connected the UI and the backend to work together and fixed some major bugs.
 * Finished a unittest for the user\_repository.py
 * Cleared up many files from comments and old code that was used in the meantime when my database didn't work.
 * Checked the code in general
@@ -73,3 +81,35 @@ What was done:
 
 
 
+
+
+Date: 19.11.2025
+
+
+
+Time: 2 hours
+
+
+
+What was done:
+
+* Started doing the back end for spendings, but realized how poorly my UI-layer was made, so started rebuilding UI now using the reference app and not only the tkinter guide.
+
+
+
+Date: 20.11.2025
+
+
+
+Time: 8 hours
+
+
+
+What was done:
+
+* Got the UI-layer to work.
+* Added a spendings view so that the user can see how much they spend.
+* Also added the ability for user to add their spendings.
+* Made test for the spendings\_repository and ran it.
+* Downloaded pylint and started the task for it.
+* Figured out how to make the logged in user relevant when writing down their spendings. Did a lot of research for that part.
