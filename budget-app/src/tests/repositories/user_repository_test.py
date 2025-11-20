@@ -41,7 +41,7 @@ class TestUserRepository(unittest.TestCase):
         user = user_repository.find_account(
             self.user_esimerkki.username, self.user_esimerkki.password)
 
-        self.assertEqual(user.username, self.user_esimerkki.username)
+        self.assertEqual(user[0], self.user_esimerkki.username)
 
     def test_find_nonexisting_username(self):
         exists = user_repository.find_username(self.user_esimerkki.username)
