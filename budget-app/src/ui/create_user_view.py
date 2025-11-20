@@ -1,6 +1,7 @@
 from tkinter import ttk, constants, messagebox
 from services.user_service import UserService
 
+
 class CreateUserView:
     def __init__(self, root, show_login_view):
         self._root = root
@@ -33,12 +34,12 @@ class CreateUserView:
             return
 
         if password != password2:
-            messagebox.showerror("showerror","Passwords dont match")
+            messagebox.showerror("showerror", "Passwords dont match")
             return
 
         us = UserService()
         if us.find_user(username):
-            messagebox.showerror("showerror","Username already exists")
+            messagebox.showerror("showerror", "Username already exists")
             return
 
         us.create_user(username, password)
@@ -47,25 +48,31 @@ class CreateUserView:
     def _initialize_username_field(self):
         username_label = ttk.Label(master=self._frame, text="Enter username:")
         self._username_entry = ttk.Entry(master=self._frame)
-        username_label.grid(row=1, column=0, sticky=(constants.E, constants.W), padx=5, pady=5)
-        self._username_entry.grid(row=1, column=1, sticky=(constants.E, constants.W), padx=5, pady=5)
-
+        username_label.grid(row=1, column=0, sticky=(
+            constants.E, constants.W), padx=5, pady=5)
+        self._username_entry.grid(row=1, column=1, sticky=(
+            constants.E, constants.W), padx=5, pady=5)
 
     def _initialize_password_field(self):
         password1_label = ttk.Label(master=self._frame, text="Enter password:")
         self._password1_entry = ttk.Entry(master=self._frame, show='*')
-        password1_label.grid(row=2, column=0, sticky=(constants.E, constants.W), padx=5, pady=5)
-        self._password1_entry.grid(row=2, column=1, sticky=(constants.E, constants.W), padx=5, pady=5)
+        password1_label.grid(row=2, column=0, sticky=(
+            constants.E, constants.W), padx=5, pady=5)
+        self._password1_entry.grid(row=2, column=1, sticky=(
+            constants.E, constants.W), padx=5, pady=5)
 
-        password2_label = ttk.Label(master=self._frame, text="Re enter password:")
+        password2_label = ttk.Label(
+            master=self._frame, text="Re enter password:")
         self._password2_entry = ttk.Entry(master=self._frame, show='*')
-        password2_label.grid(row=3, column=0, sticky=(constants.E, constants.W), padx=5, pady=5)
-        self._password2_entry.grid(row=3, column=1, sticky=(constants.E, constants.W), padx=5, pady=5)
-
+        password2_label.grid(row=3, column=0, sticky=(
+            constants.E, constants.W), padx=5, pady=5)
+        self._password2_entry.grid(row=3, column=1, sticky=(
+            constants.E, constants.W), padx=5, pady=5)
 
     def _initialize(self):
         self._frame = ttk.Frame(master=self._root)
-        heading_label = ttk.Label(master=self._frame, text="Register:", anchor="center")
+        heading_label = ttk.Label(
+            master=self._frame, text="Register:", anchor="center")
         heading_label.grid(
             row=0,
             column=0,

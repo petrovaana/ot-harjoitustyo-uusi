@@ -1,5 +1,6 @@
 from repositories.spendings_repository import spending_repository
 
+
 class SpendingsService:
     def __init__(self, repo=spending_repository):
         self.repo = repo

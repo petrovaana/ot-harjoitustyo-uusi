@@ -1,6 +1,7 @@
 from tkinter import ttk, constants, messagebox
 from services.user_service import UserService
 
+
 class LoginView:
     def __init__(self, root, show_create_user_view, show_logged_in_view):
         self._root = root
@@ -26,7 +27,8 @@ class LoginView:
         if us.login(username, password):
             self._show_logged_in_view(username)
         else:
-            messagebox.showerror("Showerror", "The username or the password was incorrect")
+            messagebox.showerror(
+                "Showerror", "The username or the password was incorrect")
             return
 
     def _initialize_username_field(self):
@@ -43,8 +45,11 @@ class LoginView:
 
     def _initialize(self):
         self._frame = ttk.Frame(master=self._root)
-        label = ttk.Label(master=self._frame, text="Login with an existing username:", anchor="center")#Asked AI for how to make the text in the middle
-        label.grid(row=0, column=0, columnspan=2, sticky=(constants.W + constants.E), padx=5, pady=5)
+        # Asked AI for how to make the text in the middle
+        label = ttk.Label(
+            master=self._frame, text="Login with an existing username:", anchor="center")
+        label.grid(row=0, column=0, columnspan=2, sticky=(
+            constants.W + constants.E), padx=5, pady=5)
 
         self._initialize_username_field()
         self._initialize_password_field()
@@ -64,8 +69,10 @@ class LoginView:
             pady=5
         )
 
-        label_registration = ttk.Label(master=self._frame, text="No account? Please register: ", anchor="center")
-        label_registration.grid(row=5, column=0, columnspan=2, sticky=(constants.W + constants.E), padx=5, pady=5)
+        label_registration = ttk.Label(
+            master=self._frame, text="No account? Please register: ", anchor="center")
+        label_registration.grid(row=5, column=0, columnspan=2, sticky=(
+            constants.W + constants.E), padx=5, pady=5)
 
         button_register = ttk.Button(
             master=self._frame,

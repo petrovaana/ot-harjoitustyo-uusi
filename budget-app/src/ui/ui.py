@@ -3,7 +3,8 @@ from ui.create_user_view import CreateUserView
 from ui.logged_in_budget_view import LoggedInView
 from ui.create_new_spending_view import CreateSpendingView
 from services.user_service import UserService
-#from ui.create_new_income_view import CreateIncomeView
+# from ui.create_new_income_view import CreateIncomeView
+
 
 class UI:
     def __init__(self, root):

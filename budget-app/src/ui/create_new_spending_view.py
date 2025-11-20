@@ -2,6 +2,7 @@ from tkinter import ttk, constants, messagebox
 from services.user_service import UserService
 from services.spendings_service import SpendingsService
 
+
 class CreateSpendingView:
     def __init__(self, root, show_logged_in_view, username):
         self._root = root
@@ -39,17 +40,23 @@ class CreateSpendingView:
     def _initialize_entryfields(self):
         amount_label = ttk.Label(master=self._frame, text="Amount: ")
         self._entry_amount = ttk.Entry(master=self._frame)
-        amount_label.grid(row=1, column=0, sticky=(constants.E, constants.W), padx=5, pady=5)
-        self._entry_amount.grid(row=1, sticky=(constants.E, constants.W), column=1, padx=5, pady=5)
+        amount_label.grid(row=1, column=0, sticky=(
+            constants.E, constants.W), padx=5, pady=5)
+        self._entry_amount.grid(row=1, sticky=(
+            constants.E, constants.W), column=1, padx=5, pady=5)
 
         content_label = ttk.Label(master=self._frame, text="Content: ")
         self._entry_content = ttk.Entry(master=self._frame)
-        content_label.grid(row=2, column=0, sticky=(constants.E, constants.W), padx=5, pady=5)
-        self._entry_content.grid(row=2, column=1, sticky=(constants.E, constants.W), padx=5, pady=5)
+        content_label.grid(row=2, column=0, sticky=(
+            constants.E, constants.W), padx=5, pady=5)
+        self._entry_content.grid(row=2, column=1, sticky=(
+            constants.E, constants.W), padx=5, pady=5)
 
     def _initialize(self):
-        label = ttk.Label(master=self._frame, text="Log in a new spending:", anchor="center")
-        label.grid(row=0, column=0, columnspan=2, sticky=(constants.W + constants.E), padx=5, pady=5)
+        label = ttk.Label(master=self._frame,
+                          text="Log in a new spending:", anchor="center")
+        label.grid(row=0, column=0, columnspan=2, sticky=(
+            constants.W + constants.E), padx=5, pady=5)
 
         self._initialize_entryfields()
 

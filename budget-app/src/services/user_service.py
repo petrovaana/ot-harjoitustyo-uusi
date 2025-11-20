@@ -1,5 +1,6 @@
 from repositories.user_repository import user_repository
 
+
 class UserService:
     def __init__(self, repo=user_repository):
         self.repo = repo

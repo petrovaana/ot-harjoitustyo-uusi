@@ -3,6 +3,7 @@ from tkinter import constants, ttk
 from services.spendings_service import SpendingsService
 from services.user_service import UserService
 
+
 class SpendingsListView:
     def __init__(self, root, spendings, user):
         self._root = root
@@ -20,7 +21,17 @@ class SpendingsListView:
 
     def _initialize_spending_item(self, spending):
         item_frame = ttk.Frame(master=self._frame)
-        label = ttk.Label(master=item_frame, text=f"{spending.content} {spending.amount}")
+        label = ttk.Label(master=item_frame,
+                          text=f"{spending.content}: {spending.amount}€")
+
+        label.grid(row=0, column=0, padx=5, pady=5, sticky=constants.W)
+
+        item_frame.grid_columnconfigure(0, weight=1)
+        item_frame.pack(fill=constants.X)
+
+    def _initialize_all_spending(self):
+        item_frame = ttk.Frame(master=self._frame)
+        label = ttk.Label(master=item_frame, text=f"{self._spendings}€")
 
         label.grid(row=0, column=0, padx=5, pady=5, sticky=constants.W)
 
@@ -32,6 +43,9 @@ class SpendingsListView:
 
         for spending in self._spendings:
             self._initialize_spending_item(spending)
+
+        self._initialize_all_spending()
+
 
 class LoggedInView:
     def __init__(self, root, show_login_view, show_create_spending_view, username):
@@ -89,7 +103,8 @@ class LoggedInView:
             self._spending_list_view.destroy()
 
         self._spending_list_frame = ttk.Frame(master=self._frame)
-        self._spending_list_frame.pack(fill=constants.BOTH, expand=True, pady=10)
+        self._spending_list_frame.pack(
+            fill=constants.BOTH, expand=True, pady=10)
 
         spendings = self.ss.get_all_spendings(self._user)
         self._spending_list_view = SpendingsListView(

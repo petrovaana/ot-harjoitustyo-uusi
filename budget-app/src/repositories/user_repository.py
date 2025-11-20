@@ -1,10 +1,11 @@
 from entities.user import User
 from database_connection import get_database_connection
 
+
 class UserRepository:
     def __init__(self, connection):
         self._connection = connection
-    
+
     def find_all(self):
         cursor = self._connection.cursor()
         cursor.execute("select * from users")
@@ -19,7 +20,8 @@ class UserRepository:
 
     def find_account(self, username, password):
         cursor = self._connection.cursor()
-        cursor.execute("select * from users WHERE username = ? and password = ?", (username, password))
+        cursor.execute(
+            "select * from users WHERE username = ? and password = ?", (username, password))
         row = cursor.fetchone()
         if row:
             return (row["username"], row["password"])
@@ -27,12 +29,14 @@ class UserRepository:
 
     def add_user(self, username, password):
         cursor = self._connection.cursor()
-        cursor.execute("INSERT into users (username, password) values (?, ?)", (username, password))
+        cursor.execute(
+            "INSERT into users (username, password) values (?, ?)", (username, password))
         self._connection.commit()
 
     def delete_all(self):
         cursor = self._connection.cursor()
         cursor.execute("DELETE from users")
         self._connection.commit()
+
 
 user_repository = UserRepository(get_database_connection())
