@@ -22,17 +22,27 @@ The application has classes User and Budget. They describe users and their bugde
 ```mermaid
 
 classDiagram
-    Budget "\*" --> "1" User
+    User "1" --> "\*" Spendings
+    User "1" --> "\*" Incomes
+    
         class User{
             id
             username
             password
         }
 
-        class Budget{
+        class Spendings{
             id
             amount
             content
+            username
+        }
+
+        class Incomes{
+            id
+            amount
+            content
+            username
         }
 
 ```
