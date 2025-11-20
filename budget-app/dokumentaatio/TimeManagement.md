@@ -2,6 +2,10 @@
 
 
 
+### Week 1:
+
+
+
 Date: 11.11.2025
 
 
@@ -83,6 +87,16 @@ What was done:
 
 
 
+FIRST WEEKS TOTAL HOURS: 17 hours
+
+
+
+### Week 2:
+
+
+
+
+
 Date: 19.11.2025
 
 
@@ -113,3 +127,10 @@ What was done:
 * Made test for the spendings\_repository and ran it.
 * Downloaded pylint and started the task for it.
 * Figured out how to make the logged in user relevant when writing down their spendings. Did a lot of research for that part.
+
+
+
+
+
+2ND WEEK TOTAL HOURS: 10
+
