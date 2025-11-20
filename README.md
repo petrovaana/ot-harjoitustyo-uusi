@@ -8,3 +8,6 @@ Sovelluksessa käyttäjä pystyy budjetoimaan omia menojaan. Käyttäjä pystyy 
 
 [Dokumentaatio](budget-app/dokumentaatio)
 
+[Arkkitehtuuri](budget-app/dokumentaatio/arkkitehtuuri.md)
+
+
