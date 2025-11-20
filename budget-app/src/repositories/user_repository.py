@@ -11,20 +11,18 @@ class UserRepository:
         rows = cursor.fetchall()
         return list(User(row["username"], row["password"]) for row in rows)
 
-    #Tätä käytetään user_services ku tarkistetaan onko käyttäjä olemassa jo
     def find_username(self, username):
         cursor = self._connection.cursor()
         cursor.execute("select 1 from users WHERE username = ?", (username,))
         row = cursor.fetchone()
         return row is not None
 
-    #Käytetään login tarkistukses
     def find_account(self, username, password):
         cursor = self._connection.cursor()
         cursor.execute("select * from users WHERE username = ? and password = ?", (username, password))
         row = cursor.fetchone()
         if row:
-            return User(row["username"], row["password"])
+            return (row["username"], row["password"])
         return None
 
     def add_user(self, username, password):

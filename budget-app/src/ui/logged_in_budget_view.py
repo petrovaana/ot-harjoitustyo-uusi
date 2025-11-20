@@ -1,46 +1,119 @@
-#Coursematerial, geeksforgeeks for tkinter
 import tkinter as tk
 from tkinter import constants, ttk
+from services.spendings_service import SpendingsService
+from services.user_service import UserService
 
-class LoggedInView:
-    def __init__(self, root, handle_show_new_spending_view, handle_show_new_income_view, username):
+class SpendingsListView:
+    def __init__(self, root, spendings, user):
         self._root = root
-        self._handle_show_new_spending_view = handle_show_new_spending_view
-        self._handle_show_new_income_view = handle_show_new_income_view
-        self._frame = ttk.Frame(master=self._root)
-        self._username = username
+        self._spendings = spendings
+        self._frame = None
+        self._user = user
 
         self._initialize()
 
     def pack(self):
         self._frame.pack(fill=constants.X)
-    
+
     def destroy(self):
         self._frame.destroy()
 
-#sama homma jakaa eri funktioihin ja initializes vast määritellä frame?
+    def _initialize_spending_item(self, spending):
+        item_frame = ttk.Frame(master=self._frame)
+        label = ttk.Label(master=item_frame, text=f"{spending.content} {spending.amount}")
+
+        label.grid(row=0, column=0, padx=5, pady=5, sticky=constants.W)
+
+        item_frame.grid_columnconfigure(0, weight=1)
+        item_frame.pack(fill=constants.X)
+
     def _initialize(self):
+        self._frame = ttk.Frame(master=self._root)
+
+        for spending in self._spendings:
+            self._initialize_spending_item(spending)
+
+class LoggedInView:
+    def __init__(self, root, show_login_view, show_create_spending_view, username):
+        self.ss = SpendingsService()
+        self.us = UserService()
+
+        self._show_create_spending_view = show_create_spending_view
+        self._root = root
+        self._frame = None
+        self._show_login_view = show_login_view
+        self._user = username
+
+        self._spending_list_frame = None
+        self._spending_list_view = None
+
+        self._initialize()
+
+    def pack(self):
+        self._frame.pack(fill=constants.X)
+
+    def destroy(self):
+        self._frame.destroy()
+
+    def _logout_handler(self):
+        self.us.logout()
+        self._show_login_view()
+
+    def _initialize_header(self):
         label = tk.Label(master=self._frame, text="Welcome to Budget-App!", font=("Segoe UI", 16, "bold"))
         label.grid(row=0, column=0, columnspan=2, sticky=constants.W, padx=5, pady=5)
 
-#Menojen laatikko
-        box_spendings = tk.Frame(self._frame, bg="white", bd=2, relief="solid", width=100, height=70)#muokkaa koot koska en tiiä minkä kokosii ois hyvät
-        box_spendings.grid(row=1, column=0, padx=10, pady=10)
+        logout_button = ttk.Button(
+            master=self._frame,
+            text="Logout",
+            command=self._logout_handler
+        )
+        logout_button.grid(row=0, column=2, sticky=constants.E, padx=5, pady=5)
 
-        box_spendings_text = tk.Label(box_spendings, text="The box where all the users spendings will be", bg="white")
-        box_spendings_text.pack(padx=10, pady=10)
+    def _initialize_spending_list(self, user):
+        if self._spending_list_view:
+            self._spending_list_view.destroy()
 
-#Tulojen laatikko
-        box_incomes = tk.Frame(self._frame, bg="white", bd=2, relief="solid", width=100, height=70)
-        box_incomes.grid(row=1, column=4, padx=10, pady=10)
+        spendings = self.ss.get_all_spendings(user)
 
-        box_incomes_text = tk.Label(box_incomes, text="The box where all the users incomes will be", bg="white")
-        box_incomes_text.pack(padx=10, pady=10)
+        self._spending_list_view = SpendingsListView(
+            self._spending_list_frame,
+            spendings,
+            user
+        )
+        #self._spending_list_view.grid(row=0, column=0, sticky="ew")
 
-#Nappi millä luoda uus transaction
-        new_spending_button = ttk.Button(master=self._frame, text="Log in new spending", command=self._handle_show_new_spending_view)
-        new_spending_button.grid(row=4, column=0, columnspan=2,  padx=5, pady=5)
+    def _initialize_buttons(self):
+        new_spending_button = ttk.Button(
+            master=self._frame,
+            text="Log in new spending",
+            command=lambda: self._show_create_spending_view(self._user)
+        )
 
-#Lisätty näkyviin, mutta toiminta ei viel oo kunnossa (seuraavaan sprinttiin vast)
-        new_income_button = ttk.Button(master=self._frame, text="Log in new income", command=self._handle_show_new_income_view)
-        new_income_button.grid(row=4, column=3, columnspan=2,  padx=5, pady=5)
+        new_income_button = ttk.Button(
+            master=self._frame,
+            text="Log in new income"
+        )
+
+        new_spending_button.grid(
+            row=4,
+            column=0,
+            padx=5,
+            pady=5
+        )
+
+        new_income_button.grid(
+            row=4,
+            column=1,
+            padx=5,
+            pady=5
+        )
+
+    def _initialize(self):
+        self._frame = ttk.Frame(master=self._root)
+        self._spending_list_frame = ttk.Frame(master=self._frame)
+        self._spending_list_frame.pack()
+
+        self._initialize_header()
+        self._initialize_spending_list(self._user)
+        self._initialize_buttons()

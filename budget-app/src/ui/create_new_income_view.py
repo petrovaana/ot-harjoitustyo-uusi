@@ -1,7 +1,7 @@
 from tkinter import ttk, constants
 
 class CreateIncomeView:
-    def __init__(self, root):
+    def __init__(self, root, show_logged_in_view):
         self._root = root
         self._frame = ttk.Frame(master=self._root)
 

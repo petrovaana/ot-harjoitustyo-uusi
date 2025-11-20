@@ -49,3 +49,10 @@ class TestUserRepository(unittest.TestCase):
         users = user_repository.find_all()
 
         self.assertEqual(len(users), 0)
+    
+#Tää ois uus testi testaa tätä sit jos coverage toimii
+    def test_find_nonexisting_account(self):
+        user_repository.add_user(self.user_esimerkki.username, self.user_esimerkki.password)
+        user = user_repository.find_account(self.user_olio.username, self.user_olio.password)
+
+        self.assertEqual(user, None)
