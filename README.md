@@ -1,5 +1,10 @@
-#Ohjelmistotekniikan aineopintotyö
+# Ohjelmistotuotannon aineopintojen harjoitustyö
 
-Sovelluksessa käyttäjä pystyy budjetoimaan omia menojaan ja suunnitella etukäteen menoja sekä tuloja.
+
+
+Sovelluksessa käyttäjä pystyy budjetoimaan omia menojaan. Käyttäjä pystyy kirjaamaan menojaan ja tulojaan sekä poistamaan nämä.
+
+
 
 [Dokumentaatio](budget-app/dokumentaatio)
+
