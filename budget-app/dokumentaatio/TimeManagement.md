@@ -132,5 +132,23 @@ What was done:
 
 
 
-2ND WEEK TOTAL HOURS: 10
+Date: 25.11.2025
+
+
+
+Time: 4 hours
+
+
+
+What was done:
+
+* Checking code and the programme.
+* Fixing README.md file.
+* Created User-Guide.
+* Learning about Pylint.
+* Fixing Pylint issues.
+
+
+
+2ND WEEK TOTAL HOURS: 14
 
