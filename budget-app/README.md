@@ -9,6 +9,7 @@ A user can create an account and log to their interest their spendings. A user s
 - [Time Management documentation](budget-app/dokumentaatio/TimeManagement.md)
 - [Changelog](budget-app/dokumentaatio/changelog.md)
 - [Architecture](budget-app/dokumentaatio/arkkitehtuuri.md)
+- [User Guide](budget-app/dokumentaatio/user-guide.md)
 
 #### How to install and get the app working
 
