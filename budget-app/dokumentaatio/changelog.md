@@ -14,3 +14,4 @@
 * A user can log their spendings.
 * A user gets total of their spendings.
 * Created tests, modified UI layer, created needed files for tracking spendings.
+* Added Pylint and fixed the main issues.
