@@ -12,7 +12,7 @@ A user can create an account and log to their interest their spendings. A user s
 
 #### How to install and get the app working
 
-Firstly install poetry, and then run the application with "poetry run invoke start"
+Firstly install poetry (poetry install), and then run the application with "poetry run invoke start"
 
 
 #### Command line commands:
