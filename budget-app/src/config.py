@@ -1,3 +1,8 @@
+"""
+    Configuration file determines the directory where this 
+    config file is and loads the environment variables from .env.
+"""
+
 import os
 from dotenv import load_dotenv
 # Have asked AI for help to figure out the database setup so might have done little

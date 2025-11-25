@@ -1,11 +1,13 @@
-from database_connection import get_database_connection
+"""Initializing the database"""
 import os
+from database_connection import get_database_connection
 
 # Asked AI to edit this file so that my database would finally work
 # AI Generated code begins
 
 
 def initialize_database():
+    """Initializes the database with the file schema.sql"""
     data_dir = os.path.join(os.path.dirname(__file__), "..", "data")
     os.makedirs(data_dir, exist_ok=True)
 

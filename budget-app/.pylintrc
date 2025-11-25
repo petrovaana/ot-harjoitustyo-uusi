@@ -1,0 +1,7 @@
+[MASTER]
+ignore=tests,ui,db_init,sql_scripts
+fail-under=8.0
+init-hook='import sys; sys.path.append("src")'
+
+#[MESSAGE CONTROL] deletes all issues from not describing the code
+#disable=C0114,C0116
