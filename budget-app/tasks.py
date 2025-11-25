@@ -7,18 +7,29 @@ def foo(ctx):
 
 @task
 def start(ctx):
-    ctx.run("python3 src/index.py", pty=True)
+    ctx.run("python -m src.index", env={"PYTHONPATH": "src"})
+
 
 @task
 def format(c):
     c.run("autopep8 --in-place --recursive src")
 
+
+@task
+def test(ctx):
+    ctx.run("pytest src")
+
+
+@task
+def lint(ctx):
+    ctx.run("pylint src")
+
+
 @task
 def coverage(ctx):
-    ctx.run("coverage run --branch -m pytest", pty=True)
+    ctx.run("coverage run --branch -m pytest")
+
 
 @task(coverage)
 def coverage_report(ctx):
-    ctx.run("coverage html", pty=True)
-    if platform != "win32":
-        call(("xdg-open", "htmlcov/index.html"))
+    ctx.run("coverage html")
