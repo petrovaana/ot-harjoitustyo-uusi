@@ -47,10 +47,9 @@ classDiagram
 
 ```
 
+Sekvenssikaavio:
 
-##Sekvenssikaavio:
-
-[Sekvenssikaavio]()
+[Sekvenssikaavio](budget-app/dokumentaatio/Sekvenssikaavio Budget-App.png)
 
 
 \#Explaining more later
