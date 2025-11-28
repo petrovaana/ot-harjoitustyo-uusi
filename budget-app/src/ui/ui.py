@@ -3,7 +3,7 @@ from ui.create_user_view import CreateUserView
 from ui.logged_in_budget_view import LoggedInView
 from ui.create_new_spending_view import CreateSpendingView
 from services.user_service import UserService
-# from ui.create_new_income_view import CreateIncomeView
+from ui.create_new_income_view import CreateIncomeView
 
 
 class UI:
@@ -44,6 +44,7 @@ class UI:
             self._root,
             self._show_login_view,
             self._show_create_spending_view,
+            self._show_create_income_view,
             username
         )
         self._current_view.pack()
@@ -53,6 +54,17 @@ class UI:
             self._current_view.destroy()
 
         self._current_view = CreateSpendingView(
+            self._root,
+            self._show_logged_in_view,
+            username
+        )
+        self._current_view.pack()
+
+    def _show_create_income_view(self, username):
+        if self._current_view:
+            self._current_view.destroy()
+
+        self._current_view = CreateIncomeView(
             self._root,
             self._show_logged_in_view,
             username
