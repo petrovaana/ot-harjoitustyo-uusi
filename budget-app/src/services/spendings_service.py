@@ -24,3 +24,7 @@ class SpendingsService:
         """Requests summed up all the spendings based on username"""
         spendings = self.repo.user_all_logged_spendings_sum(username)
         return spendings
+
+    def delete_spending(self, id):
+        """Deletes a spending"""
+        self.repo.delete_one(id)

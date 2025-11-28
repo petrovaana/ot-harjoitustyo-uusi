@@ -1,15 +1,15 @@
 """
-    This file connects spendings database and app. 
+    This file connects incomes database and app. 
     The functions request information or log in information.
 """
 
-from entities.spendings import Spendings
+from entities.incomes import Income
 from database_connection import get_database_connection
 
 
-class SpendingsRepository:
+class IncomesRepository:
     """
-    This class is responsible for operations regarding spendings in database
+    This class is responsible for operations regarding incomes in database
     """
     def __init__(self, connection):
         """Classes constructor.
@@ -18,54 +18,54 @@ class SpendingsRepository:
         """
         self._connection = connection
 
-    def find_all_spendings_by_username(self, username):
-        """Requests all of the spendings by username"""
+    def find_all_incomes_by_username(self, username):
+        """Requests all of the incomes by username"""
         cursor = self._connection.cursor()
         query = """
                 SELECT id, amount, content, username
-                FROM logged_spendings
+                FROM income
                 WHERE username = ?
                 """
         cursor.execute(query, (username,))
         rows = cursor.fetchall()
 
-        return [Spendings(row[0], row[1], row[2], row[3]) for row in rows]
+        return [Income(row[0], row[1], row[2], row[3]) for row in rows]
 
-    def user_all_logged_spendings_sum(self, username):
-        """Requests all of the users spendings and sums them"""
+    def user_all_logged_incomes_sum(self, username):
+        """Requests all of the users incomes and sums them"""
         cursor = self._connection.cursor()
         query = """
                 SELECT SUM(amount)
-                FROM logged_spendings
+                FROM income
                 WHERE username = ?
                 """
         cursor.execute(query, (username,))
         row = cursor.fetchone()[0]
         return row if row else 0
 
-    def add_spending(self, username, amount, content):
+    def add_income(self, username, amount, content):
         """
-            Adds a new spending into database
+            Adds a new income into database
             Uses username, amount and content
         """
         cursor = self._connection.cursor()
         query = """
-                INSERT into logged_spendings (username, amount, content)
+                INSERT into income (username, amount, content)
                 VALUES (?, ?, ?)
                 """
         cursor.execute(query, (username, amount, content))
         self._connection.commit()
 
     def delete_all(self):
-        """Deletes all logged spendings from database (used for testing)"""
+        """Deletes all logged incomes from database (used for testing)"""
         cursor = self._connection.cursor()
-        cursor.execute("DELETE FROM logged_spendings")
+        cursor.execute("DELETE FROM income")
         self._connection.commit()
 
     def delete_one(self, id):
-        """Deletes a spending based on id from logged spendings"""
+        """Deletes an income from database by id"""
         cursor = self._connection.cursor()
-        cursor.execute("DELETE FROM logged_spendings where id = ?", (id,))
+        cursor.execute("DELETE FROM income WHERE id = ?", (id,))
         self._connection.commit()
 
-spending_repository = SpendingsRepository(get_database_connection())
+income_repository = IncomesRepository(get_database_connection())

@@ -9,7 +9,7 @@ class Income:
             amount: describes amoun of income
             content: describes the content of income
         """
-    def __init__(self, amount, content, username=None):
+    def __init__(self, id, amount, content, username=None):
         """
         Classes constructor that creates a new income
 
@@ -18,6 +18,7 @@ class Income:
             amount: float that describes the amount of an income
             content: text that describes the content of an income
         """
+        self.id = id
         self.username = username
         self.amount = amount
         self.content = content
