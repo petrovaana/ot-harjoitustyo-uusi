@@ -50,6 +50,7 @@ classDiagram
 Sekvenssikaavio:
 
 [Sekvenssikaavio](budget-app/dokumentaatio/SekvenssikaavioBudget-App.png)
+In case the link doesn't work the file is in dokumentaatio as SekvenssikaavioBudget-App.png
 
 \#Explaining more later
 
