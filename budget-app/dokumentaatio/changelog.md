@@ -15,3 +15,10 @@
 * A user gets total of their spendings.
 * Created tests, modified UI layer, created needed files for tracking spendings.
 * Added Pylint and fixed the main issues.
+
+## Week 5:
+
+* A user can log their incomes.
+* A user gets total of their incomes.
+* Created test for incomes and modified the test for spendings.
+* A user can delete an income/spending.
