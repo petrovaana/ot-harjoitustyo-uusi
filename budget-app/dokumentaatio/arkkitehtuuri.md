@@ -48,6 +48,10 @@ classDiagram
 ```
 
 
+##Sekvenssikaavio:
+
+[Sekvenssikaavio]()
+
 
 \#Explaining more later
 
