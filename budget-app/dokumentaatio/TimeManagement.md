@@ -2,7 +2,7 @@
 
 
 
-### Week 1:
+### Week 1: (11.11.-18.11.)
 
 
 
@@ -91,7 +91,7 @@ FIRST WEEKS TOTAL HOURS: 17 hours
 
 
 
-### Week 2:
+### Week 2: (19.11.-25.11.)
 
 
 
@@ -151,4 +151,74 @@ What was done:
 
 
 2ND WEEK TOTAL HOURS: 14
+
+
+
+# Week 3: (26.11.-2.12.)
+
+
+
+Date: 26.11.2025
+
+
+
+Time: 4h
+
+
+
+What was done:
+
+* Added the incomes to logged in view. Now a user can add a new income.
+* Started adding the delete button.
+* Did some changes ahead to documentations.
+* Fixed prior issues that was commented on.
+
+
+
+
+
+Date: 27.11.2025
+
+
+
+Time: 5h
+
+
+
+What was done:
+
+* Finnished adding the delete button. Had to debug other files and for example add id to classes and other plases for it to work.
+* In that process messed up whole UI by accident so had to debug it, and had major issues with the listings. Overcame issue by adding extra frames, so that listings and the total aren't in the same frame.
+
+
+
+
+
+Date: 28.11.2025
+
+
+
+
+
+Time: 4h
+
+
+
+
+
+What was done:
+
+* Checking the criteria and adding needed information.
+* Sekvenssikaavio was done.
+* Tests 40% for both.
+
+
+
+
+
+
+
+TIME TOGETHER THIS WEEK: 13 hours
+
+
 
