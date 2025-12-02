@@ -1,6 +1,8 @@
 # Ohjelmistotuotannon aineopintojen harjoitustyö
 
 
+[First release](budget-app)
+
 
 Sovelluksessa käyttäjä pystyy budjetoimaan omia menojaan. Käyttäjä pystyy kirjaamaan menojaan ja tulojaan sekä poistamaan nämä.
 
@@ -9,5 +11,6 @@ Sovelluksessa käyttäjä pystyy budjetoimaan omia menojaan. Käyttäjä pystyy 
 [Dokumentaatio](budget-app/dokumentaatio)
 
 [Arkkitehtuuri](budget-app/dokumentaatio/arkkitehtuuri.md)
+
 
 
