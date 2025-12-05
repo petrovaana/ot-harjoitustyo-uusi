@@ -1,5 +1,6 @@
-from tkinter import ttk, constants, messagebox
+from tkinter import constants, messagebox
 from services.user_service import UserService
+import tkinter as tk
 
 
 class CreateUserView:
@@ -46,33 +47,33 @@ class CreateUserView:
         self._show_login_view()
 
     def _initialize_username_field(self):
-        username_label = ttk.Label(master=self._frame, text="Enter username:")
-        self._username_entry = ttk.Entry(master=self._frame)
+        username_label = tk.Label(master=self._frame, text="Enter username:", bg="#c8d5b9")
+        self._username_entry = tk.Entry(master=self._frame, bg="#e9f5db")
         username_label.grid(row=1, column=0, sticky=(
             constants.E, constants.W), padx=5, pady=5)
         self._username_entry.grid(row=1, column=1, sticky=(
             constants.E, constants.W), padx=5, pady=5)
 
     def _initialize_password_field(self):
-        password1_label = ttk.Label(master=self._frame, text="Enter password:")
-        self._password1_entry = ttk.Entry(master=self._frame, show='*')
+        password1_label = tk.Label(master=self._frame, text="Enter password:", bg="#c8d5b9")
+        self._password1_entry = tk.Entry(master=self._frame, show='*', bg="#e9f5db")
         password1_label.grid(row=2, column=0, sticky=(
             constants.E, constants.W), padx=5, pady=5)
         self._password1_entry.grid(row=2, column=1, sticky=(
             constants.E, constants.W), padx=5, pady=5)
 
-        password2_label = ttk.Label(
-            master=self._frame, text="Re enter password:")
-        self._password2_entry = ttk.Entry(master=self._frame, show='*')
+        password2_label = tk.Label(
+            master=self._frame, text="Re enter password:", bg="#c8d5b9")
+        self._password2_entry = tk.Entry(master=self._frame, show='*', bg="#e9f5db")
         password2_label.grid(row=3, column=0, sticky=(
             constants.E, constants.W), padx=5, pady=5)
         self._password2_entry.grid(row=3, column=1, sticky=(
             constants.E, constants.W), padx=5, pady=5)
 
     def _initialize(self):
-        self._frame = ttk.Frame(master=self._root)
-        heading_label = ttk.Label(
-            master=self._frame, text="Register:", anchor="center")
+        self._frame = tk.Frame(master=self._root, bg="#b5c99a")
+        heading_label = tk.Label(
+            master=self._frame, text="Register:", anchor="center", bg="#c8d5b9")
         heading_label.grid(
             row=0,
             column=0,
@@ -85,10 +86,11 @@ class CreateUserView:
         self._initialize_username_field()
         self._initialize_password_field()
 
-        create_user_button = ttk.Button(
+        create_user_button = tk.Button(
             master=self._frame,
             text="Create",
-            command=self.create_user_handler
+            command=self.create_user_handler,
+            bg="#718355"
         )
 
         create_user_button.grid(
@@ -100,10 +102,11 @@ class CreateUserView:
             pady=5
         )
 
-        back_to_login_button = ttk.Button(
+        back_to_login_button = tk.Button(
             master=self._frame,
             text="Back To Login",
-            command=self._show_login_view
+            command=self._show_login_view,
+            bg="#718355"
         )
 
         back_to_login_button.grid(

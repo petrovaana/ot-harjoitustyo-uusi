@@ -1,4 +1,5 @@
 from tkinter import constants, ttk
+import tkinter as tk
 
 class IncomesListView:
     def __init__(self, root, incomes, user, handle_delete_income):
@@ -17,14 +18,16 @@ class IncomesListView:
         self._frame.destroy()
 
     def _initialize_income_item(self, income):
-        item_frame = ttk.Frame(master=self._frame)
-        label = ttk.Label(master=item_frame,
-                          text=f"{income.content}: {income.amount}€")
+        item_frame = tk.Frame(master=self._frame, bg="#b5c99a")
+        label = tk.Label(master=item_frame,
+                          text=f"{income.content}: {income.amount}€",
+                          bg="#b5c99a")
 
-        delete_button = ttk.Button(
+        delete_button = tk.Button(
             master=item_frame,
             text="Delete",
-            command=lambda: self._handle_delete_income(income.id)
+            command=lambda: self._handle_delete_income(income.id),
+            bg="#718355"
         )
 
         label.grid(row=0, column=0, padx=5, pady=5, sticky=constants.W)

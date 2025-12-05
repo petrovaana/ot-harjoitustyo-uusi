@@ -1,5 +1,6 @@
 from tkinter import ttk, constants, messagebox
 from services.user_service import UserService
+import tkinter as tk
 
 class LoginView:
     def __init__(self, root, show_create_user_view, show_logged_in_view):
@@ -31,32 +32,23 @@ class LoginView:
             return
 
     def _initialize_username_field(self):
-        label_username = ttk.Label(master=self._frame, text="Username:")
-        self._entry_username = ttk.Entry(master=self._frame)
+        label_username = tk.Label(master=self._frame, text="Username:", bg="#c8d5b9")
+        self._entry_username = tk.Entry(master=self._frame, bg="#e9f5db")
         label_username.grid(row=1, column=0, padx=5, pady=5)
         self._entry_username.grid(row=1, column=1, padx=5, pady=5)
 
     def _initialize_password_field(self):
-        label_password = ttk.Label(master=self._frame, text="Password:")
-        self._entry_password = ttk.Entry(master=self._frame, show='*')
+        label_password = tk.Label(master=self._frame, text="Password:", bg="#c8d5b9")
+        self._entry_password = tk.Entry(master=self._frame, show='*', bg="#e9f5db")
         label_password.grid(row=2, column=0, padx=5, pady=5)
         self._entry_password.grid(row=2, column=1, padx=5, pady=5)
 
-    def _initialize(self):
-        self._frame = ttk.Frame(master=self._root)
-        # Asked AI for how to make the text in the middle
-        label = ttk.Label(
-            master=self._frame, text="Login with an existing username:", anchor="center")
-        label.grid(row=0, column=0, columnspan=2, sticky=(
-            constants.W + constants.E), padx=5, pady=5)
-
-        self._initialize_username_field()
-        self._initialize_password_field()
-
-        button_login = ttk.Button(
+    def _initialize_buttons(self):
+        button_login = tk.Button(
             master=self._frame,
             text="Login",
-            command=self.login_handler
+            command=self.login_handler,
+            bg="#718355"
         )
 
         button_login.grid(
@@ -68,15 +60,11 @@ class LoginView:
             pady=5
         )
 
-        label_registration = ttk.Label(
-            master=self._frame, text="No account? Please register: ", anchor="center")
-        label_registration.grid(row=5, column=0, columnspan=2, sticky=(
-            constants.W + constants.E), padx=5, pady=5)
-
-        button_register = ttk.Button(
+        button_register = tk.Button(
             master=self._frame,
             text="Create an account",
-            command=self._show_create_user_view
+            command=self._show_create_user_view,
+            bg="#718355"
         )
 
         button_register.grid(
@@ -87,3 +75,25 @@ class LoginView:
             padx=5,
             pady=5
         )
+
+    def _initialize(self):
+        self._frame = tk.Frame(master=self._root, bg="#c8d5b9")
+        # Asked AI for how to make the text in the middle
+        label = tk.Label(
+            master=self._frame,
+            text="Login with an existing username:",
+            anchor="center",
+            bg="#c8d5b9"
+            )
+        label.grid(row=0, column=0, columnspan=2, sticky=(
+            constants.W + constants.E), padx=5, pady=5)
+
+        self._initialize_username_field()
+        self._initialize_password_field()
+        self._initialize_buttons()
+
+        label_registration = tk.Label(
+            master=self._frame, text="No account? Please register: ", anchor="center", bg="#c8d5b9")
+        label_registration.grid(row=5, column=0, columnspan=2, sticky=(
+            constants.W + constants.E), padx=5, pady=5)
+

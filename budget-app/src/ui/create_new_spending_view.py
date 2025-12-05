@@ -1,4 +1,5 @@
 from tkinter import ttk, constants, messagebox
+import tkinter as tk
 from services.user_service import UserService
 from services.spendings_service import SpendingsService
 
@@ -41,14 +42,14 @@ class CreateSpendingView:
 
     def _initialize_entryfields(self):
         amount_label = ttk.Label(master=self._frame, text="Amount: ")
-        self._entry_amount = ttk.Entry(master=self._frame)
+        self._entry_amount = tk.Entry(master=self._frame, bg="#e9f5db")
         amount_label.grid(row=1, column=0, sticky=(
             constants.E, constants.W), padx=5, pady=5)
         self._entry_amount.grid(row=1, sticky=(
             constants.E, constants.W), column=1, padx=5, pady=5)
 
         content_label = ttk.Label(master=self._frame, text="Content: ")
-        self._entry_content = ttk.Entry(master=self._frame)
+        self._entry_content = tk.Entry(master=self._frame, bg="#e9f5db")
         content_label.grid(row=2, column=0, sticky=(
             constants.E, constants.W), padx=5, pady=5)
         self._entry_content.grid(row=2, column=1, sticky=(
@@ -62,10 +63,11 @@ class CreateSpendingView:
 
         self._initialize_entryfields()
 
-        submit_button = ttk.Button(
+        submit_button = tk.Button(
             master=self._frame,
             text="Submit",
-            command=self.submit_spending
+            command=self.submit_spending,
+            bg="#718355"
         )
 
         submit_button.grid(

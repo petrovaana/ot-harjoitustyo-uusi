@@ -1,4 +1,5 @@
 from tkinter import constants, ttk
+import tkinter as tk
 from services.spendings_service import SpendingsService
 from services.user_service import UserService
 from services.income_service import IncomesService
@@ -16,6 +17,7 @@ class LoggedInView:
         self._user = username
         self._frame = None
         self._header_frame = None
+        self._difference_frame = None
 
         self._show_create_spending_view = show_create_spending_view
         self._spending_section_frame = None
@@ -28,6 +30,7 @@ class LoggedInView:
         self._incomes_total_frame = None
         self._income_list_frame = None
         self._incomes_total_label = None
+        self._total_label = None
 
         self._buttons_frame = None
 
@@ -44,21 +47,40 @@ class LoggedInView:
         self.us.logout()
         self._show_login_view()
 
+    def _initialize_difference(self):
+        #difference_frame = self._difference_frame
+        spendings = self.ss.sum_numbers(self._user)
+        incomes = self.cs.sum_numbers(self._user)
+
+        result = incomes - spendings
+
+        if not self._total_label:
+            self._total_label = tk.Label(
+                master=self._difference_frame,
+                text=f"Total: {result}€",
+                bg="#b5c99a"
+            )
+            self._total_label.pack(anchor="w", padx=5, pady=5)
+        else:
+            self._total_label.config(text=f"Total: {result}€") #This is AI generated
+
     def _initialize_header(self):
         header_frame = self._header_frame
 
-        label = ttk.Label(
+        label = tk.Label(
             master=header_frame,
             text="Welcome to Budget-App!",
-            font=("Segoe UI", 16, "bold")
+            font=("Segoe UI", 16, "bold"),
+            bg="#c8d5b9"
         )
 
         label.grid(row=0, column=0, sticky=constants.W, padx=5, pady=5)
 
-        logout_button = ttk.Button(
+        logout_button = tk.Button(
             master=header_frame,
             text="Logout",
-            command=self.logout_handler
+            command=self.logout_handler,
+            bg="#718355"
         )
 
         logout_button.grid(
@@ -73,7 +95,7 @@ class LoggedInView:
         if self._spending_list_frame:
             self._spending_list_frame.destroy()
 
-        self._spending_list_frame = ttk.Frame(self._spending_section_frame)
+        self._spending_list_frame = tk.Frame(self._spending_section_frame)
         self._spending_list_frame.pack(fill=constants.X)
 
         spendings = self.ss.get_all_spendings(self._user)
@@ -92,9 +114,10 @@ class LoggedInView:
         spendings = self.ss.sum_numbers(self._user)
 
         if not self._spendings_total_label:
-            self._spendings_total_label = ttk.Label(
+            self._spendings_total_label = tk.Label(
                 master=self._spendings_total_frame,
-                text=f"Total spendings: {spendings}€"
+                text=f"Total spendings: {spendings}€",
+                bg="#b5c99a"
             )
             self._spendings_total_label.pack(anchor="w", padx=5, pady=5)
         else:
@@ -107,7 +130,7 @@ class LoggedInView:
         if self._income_list_frame:
             self._income_list_frame.destroy()
 
-        self._income_list_frame = ttk.Frame(self._income_section_frame)
+        self._income_list_frame = tk.Frame(self._income_section_frame, bg="#b5c99a")
         self._income_list_frame.pack(fill=constants.X)
 
         incomes = self.cs.get_all_incomes(self._user)
@@ -126,14 +149,16 @@ class LoggedInView:
         incomes = self.cs.sum_numbers(self._user)
 
         if not self._incomes_total_label:
-            self._incomes_total_label = ttk.Label(
+            self._incomes_total_label = tk.Label(
                 master=self._incomes_total_frame,
-                text=f"Total incomes: {incomes}€"
+                text=f"Total incomes: {incomes}€",
+                bg="#b5c99a"
             )
             self._incomes_total_label.pack(anchor="w", padx=5, pady=5)
         else:
             self._incomes_total_label.config(
-                text=f"Total incomes: {incomes}€"
+                text=f"Total incomes: {incomes}€",
+                bg="#b5c99a"
             )
 #AI Generated code ends
 
@@ -141,23 +166,27 @@ class LoggedInView:
         self.ss.delete_spending(spending_id)
         self._initialize_spending_list()
         self._initialize_spendings_all()
+        self._initialize_difference()
 
     def _handle_delete_income(self, income_id):
         self.cs.delete_income(income_id)
         self._initialize_income_list()
         self._initialize_incomes_all()
+        self._initialize_difference()
 
     def _initialize_buttons(self):
-        new_spending_button = ttk.Button(
+        new_spending_button = tk.Button(
             master=self._buttons_frame,
             text="Log new spending",
-            command=lambda: self._show_create_spending_view(self._user)
+            command=lambda: self._show_create_spending_view(self._user),
+            bg="#718355"
         )
 
-        new_income_button = ttk.Button(
+        new_income_button = tk.Button(
             master=self._buttons_frame,
             text="Log new income",
-            command=lambda: self._show_create_income_view(self._user)
+            command=lambda: self._show_create_income_view(self._user),
+            bg="#718355"
         )
 
         new_spending_button.grid(
@@ -176,35 +205,39 @@ class LoggedInView:
 
 
     def _initialize(self):
-        self._frame = ttk.Frame(master=self._root)
+        self._frame = tk.Frame(master=self._root, bg="#b5c99a")
         self._frame.pack(fill=constants.BOTH, expand=True)
 
-        self._header_frame = ttk.Frame(self._frame)
+        self._header_frame = tk.Frame(self._frame, bg="#b5c99a")
         self._header_frame.pack(fill=constants.X)
         self._initialize_header()
 
-        self._spending_section_frame = ttk.Frame(self._frame)
+        self._spending_section_frame = tk.Frame(self._frame)
         self._spending_section_frame.pack(fill=constants.X, pady=10)
 
-        self._spendings_total_frame = ttk.Frame(self._spending_section_frame)
+        self._spendings_total_frame = tk.Frame(self._spending_section_frame)
         self._spendings_total_frame.pack(fill=constants.X)
         self._initialize_spendings_all()
 
-        self._spending_list_frame = ttk.Frame(self._spending_section_frame)
+        self._spending_list_frame = tk.Frame(self._spending_section_frame, bg="#b5c99a")
         self._spending_list_frame.pack(fill=constants.X)
         self._initialize_spending_list()
 
-        self._income_section_frame = ttk.Frame(self._frame)
+        self._income_section_frame = tk.Frame(self._frame)
         self._income_section_frame.pack(fill=constants.X, pady=10)
 
-        self._incomes_total_frame = ttk.Frame(self._income_section_frame)
+        self._incomes_total_frame = tk.Frame(self._income_section_frame)
         self._incomes_total_frame.pack(fill=constants.X)
         self._initialize_incomes_all()
 
-        self._income_list_frame = ttk.Frame(self._income_section_frame)
+        self._income_list_frame = tk.Frame(self._income_section_frame, bg="#b5c99a")
         self._income_list_frame.pack(fill=constants.X)
         self._initialize_income_list()
 
-        self._buttons_frame = ttk.Frame(self._frame)
+        self._difference_frame = tk.Frame(self._frame, bg="#b5c99a")
+        self._difference_frame.pack(fill=constants.X, pady=10)
+        self._initialize_difference()
+
+        self._buttons_frame = tk.Frame(self._frame, bg="#b5c99a")
         self._buttons_frame.pack(fill=constants.X, pady=10)
         self._initialize_buttons()
