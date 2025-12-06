@@ -1,10 +1,11 @@
-from tkinter import constants, ttk
+from tkinter import constants
 import tkinter as tk
 from services.spendings_service import SpendingsService
 from services.user_service import UserService
 from services.income_service import IncomesService
 from ui.incomes_list_view import IncomesListView
 from ui.spending_list_view import SpendingsListView
+
 
 class LoggedInView:
     def __init__(self, root, show_login_view, show_create_spending_view, show_create_income_view, username):
@@ -13,8 +14,9 @@ class LoggedInView:
         self.cs = IncomesService()
 
         self._root = root
-        self._show_login_view = show_login_view
         self._user = username
+
+        self._show_login_view = show_login_view
         self._frame = None
         self._header_frame = None
         self._difference_frame = None
@@ -48,7 +50,6 @@ class LoggedInView:
         self._show_login_view()
 
     def _initialize_difference(self):
-        #difference_frame = self._difference_frame
         spendings = self.ss.sum_numbers(self._user)
         incomes = self.cs.sum_numbers(self._user)
 
@@ -58,11 +59,17 @@ class LoggedInView:
             self._total_label = tk.Label(
                 master=self._difference_frame,
                 text=f"Total: {result}€",
-                bg="#b5c99a"
+                bg="#c8d5b9"
             )
-            self._total_label.pack(anchor="w", padx=5, pady=5)
+            #AI Generated begins
+            self._total_label.pack(
+                anchor="w",
+                padx=5,
+                pady=5
+                )
         else:
-            self._total_label.config(text=f"Total: {result}€") #This is AI generated
+            self._total_label.config(text=f"Total: {result}€", bg="#c8d5b9")
+            #AI Generated ends
 
     def _initialize_header(self):
         header_frame = self._header_frame
@@ -74,7 +81,13 @@ class LoggedInView:
             bg="#c8d5b9"
         )
 
-        label.grid(row=0, column=0, sticky=constants.W, padx=5, pady=5)
+        label.grid(
+            row=0,
+            column=0,
+            sticky=constants.W,
+            padx=5,
+            pady=5
+            )
 
         logout_button = tk.Button(
             master=header_frame,
@@ -95,7 +108,7 @@ class LoggedInView:
         if self._spending_list_frame:
             self._spending_list_frame.destroy()
 
-        self._spending_list_frame = tk.Frame(self._spending_section_frame)
+        self._spending_list_frame = tk.Frame(self._spending_section_frame, bg="#c8d5b9")
         self._spending_list_frame.pack(fill=constants.X)
 
         spendings = self.ss.get_all_spendings(self._user)
@@ -117,12 +130,13 @@ class LoggedInView:
             self._spendings_total_label = tk.Label(
                 master=self._spendings_total_frame,
                 text=f"Total spendings: {spendings}€",
-                bg="#b5c99a"
+                bg="#c8d5b9"
             )
             self._spendings_total_label.pack(anchor="w", padx=5, pady=5)
         else:
             self._spendings_total_label.config(
-                text=f"Total spendings: {spendings}€"
+                text=f"Total spendings: {spendings}€",
+                bg="#c8d5b9"
             )
 #AI Generated code ends
 
@@ -130,7 +144,11 @@ class LoggedInView:
         if self._income_list_frame:
             self._income_list_frame.destroy()
 
-        self._income_list_frame = tk.Frame(self._income_section_frame, bg="#b5c99a")
+        self._income_list_frame = tk.Frame(
+            self._income_section_frame,
+            bg="#b5c99a"
+            )
+
         self._income_list_frame.pack(fill=constants.X)
 
         incomes = self.cs.get_all_incomes(self._user)
@@ -152,13 +170,17 @@ class LoggedInView:
             self._incomes_total_label = tk.Label(
                 master=self._incomes_total_frame,
                 text=f"Total incomes: {incomes}€",
-                bg="#b5c99a"
+                bg="#c8d5b9"
             )
-            self._incomes_total_label.pack(anchor="w", padx=5, pady=5)
+            self._incomes_total_label.pack(
+                anchor="w",
+                padx=5,
+                pady=5
+                )
         else:
             self._incomes_total_label.config(
                 text=f"Total incomes: {incomes}€",
-                bg="#b5c99a"
+                bg="#c8d5b9"
             )
 #AI Generated code ends
 
@@ -212,10 +234,10 @@ class LoggedInView:
         self._header_frame.pack(fill=constants.X)
         self._initialize_header()
 
-        self._spending_section_frame = tk.Frame(self._frame)
+        self._spending_section_frame = tk.Frame(self._frame, bg="#b5c99a")
         self._spending_section_frame.pack(fill=constants.X, pady=10)
 
-        self._spendings_total_frame = tk.Frame(self._spending_section_frame)
+        self._spendings_total_frame = tk.Frame(self._spending_section_frame, bg="#b5c99a")
         self._spendings_total_frame.pack(fill=constants.X)
         self._initialize_spendings_all()
 
@@ -223,10 +245,10 @@ class LoggedInView:
         self._spending_list_frame.pack(fill=constants.X)
         self._initialize_spending_list()
 
-        self._income_section_frame = tk.Frame(self._frame)
+        self._income_section_frame = tk.Frame(self._frame, bg="#b5c99a")
         self._income_section_frame.pack(fill=constants.X, pady=10)
 
-        self._incomes_total_frame = tk.Frame(self._income_section_frame)
+        self._incomes_total_frame = tk.Frame(self._income_section_frame, bg="#b5c99a")
         self._incomes_total_frame.pack(fill=constants.X)
         self._initialize_incomes_all()
 
