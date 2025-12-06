@@ -5,6 +5,12 @@ from services.income_service import IncomesService
 
 
 class CreateIncomeView:
+    """class that creates a view for creating a new income
+            Attributes:
+                root: Tkinter main frame
+                show_logged_in_view: callback function, returns back to logged in view
+                username: user to identify who created the income
+    """
     def __init__(self, root, show_logged_in_view, username):
         self._root = root
         self._frame = None
