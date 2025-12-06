@@ -222,3 +222,36 @@ TIME TOGETHER THIS WEEK: 13 hours
 
 
 
+# Week 4: (2.12 - 9.12)
+
+
+
+Date: 5.12.2025
+
+
+
+Time: 3h
+
+
+
+What was done:
+
+* Created UI for the application.
+* Added the summary function for incomes - spendings.
+
+
+
+
+
+Date: 6.12.2025
+
+
+
+Time: 2h
+
+
+
+What was done:
+
+* Checking for general mistakes in the code and fixing them in the UI side.
+* Refactured all of the to make it more clear and renamed some of the functions and methods.
