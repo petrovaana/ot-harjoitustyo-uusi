@@ -55,5 +55,4 @@ class UserRepository:
         cursor.execute("DELETE from users")
         self._connection.commit()
 
-
 user_repository = UserRepository(get_database_connection())

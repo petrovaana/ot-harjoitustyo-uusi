@@ -108,7 +108,10 @@ class LoggedInView:
         if self._spending_list_frame:
             self._spending_list_frame.destroy()
 
-        self._spending_list_frame = tk.Frame(self._spending_section_frame, bg="#c8d5b9")
+        self._spending_list_frame = tk.Frame(
+            self._spending_section_frame,
+            bg="#c8d5b9"
+            )
         self._spending_list_frame.pack(fill=constants.X)
 
         spendings = self.ss.get_all_spendings(self._user)
@@ -263,3 +266,6 @@ class LoggedInView:
         self._buttons_frame = tk.Frame(self._frame, bg="#b5c99a")
         self._buttons_frame.pack(fill=constants.X, pady=10)
         self._initialize_buttons()
+
+#In general this file has a lot of things going on. I have asked AI on how framing works and
+#How would be the smartest way to work with frames and generally with listing

@@ -23,7 +23,7 @@ class SpendingsListView:
             master=self._frame,
             bg="#b5c99a"
             )
-        
+
         label = tk.Label(
             master=item_frame,
             text=f"{spending.content}: {spending.amount}€",
