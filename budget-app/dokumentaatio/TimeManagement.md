@@ -255,3 +255,32 @@ What was done:
 
 * Checking for general mistakes in the code and fixing them in the UI side.
 * Refactured all of the to make it more clear and renamed some of the functions and methods.
+
+
+
+
+
+Total this week: 5h
+
+
+
+## Week 5: Final (9.12-21.12)
+
+
+
+Date: 14.12.2025
+
+
+
+Time: 2h
+
+
+
+What was done:
+
+* Added some final touches on the UI
+* Added extra comments for clarification
+* Updated the changelog since was forgotten last week
+
+
+

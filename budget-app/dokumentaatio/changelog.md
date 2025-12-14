@@ -22,3 +22,16 @@
 * A user gets total of their incomes.
 * Created test for incomes and modified the test for spendings.
 * A user can delete an income/spending.
+
+
+
+# Week 6:
+
+* User gets total of what have they earned - spent that month.
+
+
+
+# Week 7:
+
+* Created nicer UI for the user. Added peaceful colors for their application.
+* Added last comments about different functions.
