@@ -1,12 +1,12 @@
-### Testausdokumentti
+# Testausdokumentti
 
 Ohjelmalle on laadittu Unittestejä (yksikkötestejä), joiden kattavuus on noin 50% riippuen toiminnallisuudesta.
 
 ## Yksikkötestaus
-# Repositorio-luokat
+### Repositorio-luokat
 Yksikkötestejä on laadittu repositorio luokille, jotka löytyvät tests hakemistosta. Eli testejä on laadittu user_repositorylle, income_repositorylle sekä spending_repositorylle.
 
-# Manuaalinen testaus
+### Manuaalinen testaus
 Muuten ohelmaa on testattu itse käsin. Olen kokeillut mitä käy erilaisissa tilanteissa. Bugeja on pyritty korjaamaan virheiden ilmentyessä.
 
 ## Sovellukseen jääneet laatuongelmat
